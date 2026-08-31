@@ -1,18 +1,14 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "@runway/typescript-config/nextjs.json",
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
+    "incremental": true,
+    "tsBuildInfoFile": ".next/cache/typescript/tsconfig.tsbuildinfo"
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "next-env.d.ts",
-    "next.config.js",
+    "next.config.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]

@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@runway/ui/button";
 import type { ImageProps } from "next/image";
 import Image from "next/image";
 import styles from "./page.module.css";
