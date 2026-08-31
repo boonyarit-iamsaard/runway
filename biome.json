@@ -1,0 +1,117 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "useIgnoreFile": false
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": [
+      "**",
+      "!**/.next",
+      "!**/dist",
+      "!**/.turbo",
+      "!**/.nx",
+      "!**/dev-dist",
+      "!**/.zed",
+      "!**/routeTree.gen.ts",
+      "!**/src-tauri",
+      "!**/.nuxt",
+      "!bts.jsonc",
+      "!**/.expo",
+      "!**/.wrangler",
+      "!**/.alchemy",
+      "!**/.svelte-kit",
+      "!**/.pnpm-store",
+      "!**/wrangler.jsonc",
+      "!**/.source",
+      "!**/convex/_generated",
+      "!**/public/**/*.svg"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "correctness": {
+        "useExhaustiveDependencies": "info",
+        "noNextAsyncClientComponent": "error",
+        "noBeforeInteractiveScriptOutsideDocument": "error"
+      },
+      "performance": {
+        "noSyncScripts": "error"
+      },
+      "suspicious": {
+        "useGoogleFontDisplay": "error"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "level": "warn",
+          "fix": "safe",
+          "options": {
+            "functions": ["clsx", "cva", "cn"]
+          }
+        }
+      },
+      "style": {
+        "noEnum": "error",
+        "noNonNullAssertion": "error",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useBlockStatements": "error",
+        "useDefaultParameterLast": "error",
+        "useImportType": {
+          "level": "error",
+          "options": {
+            "style": "separatedType"
+          }
+        },
+        "useNodejsImportProtocol": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["apps/web/src/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": ["@/features/*/**"],
+                    "message": "Import a feature through its index only: `@/features/<name>`. To use something else, export it from that feature's index.ts first."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
