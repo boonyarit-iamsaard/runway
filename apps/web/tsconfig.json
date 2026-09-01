@@ -2,6 +2,9 @@
   "extends": "@runway/typescript-config/nextjs.json",
   "compilerOptions": {
     "incremental": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "tsBuildInfoFile": ".next/cache/typescript/tsconfig.tsbuildinfo"
   },
   "include": [
