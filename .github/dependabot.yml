@@ -1,0 +1,32 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    # Waits before proposing a release, so a bad publish has time to surface.
+    cooldown:
+      default-days: 3
+    groups:
+      # Keeps review load sane.
+      dev-dependencies:
+        dependency-type: development
+        update-types: [minor, patch]
+      prod-minor-patch:
+        dependency-type: production
+        update-types: [minor, patch]
+    # The owner moves the core toolchain majors together.
+    ignore:
+      - dependency-name: node
+        update-types: [version-update:semver-major]
+      - dependency-name: "@types/node"
+        update-types: [version-update:semver-major]
+      - dependency-name: pnpm
+        update-types: [version-update:semver-major]
+
+  # Without this the SHA pins rot.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

@@ -5,6 +5,7 @@
     "build": "turbo run build",
     "ci": "biome ci --no-errors-on-unmatched --files-ignore-unknown=true . && pnpm format:check && pnpm lint:md && pnpm types:check && pnpm build",
     "dev": "turbo run dev",
+    "audit": "pnpm audit --audit-level moderate && pnpm audit signatures",
     "check": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true",
     "format": "prettier --write \"**/*.{md,yaml,yml}\"",
     "format:check": "prettier --check \"**/*.{md,yaml,yml}\"",
@@ -35,8 +36,9 @@
       "markdownlint --ignore-path .gitignore"
     ]
   },
-  "packageManager": "pnpm@11.23.0",
   "engines": {
-    "node": ">=24"
-  }
+    "node": ">=24.0.0",
+    "pnpm": ">=11.23.0 <12"
+  },
+  "packageManager": "pnpm@11.23.0+sha512.f00082e5b283a199b74e079da28d155c008fe232f44c8a06ea7ddfa014ecf719fc362f790ecc67b28106ddac2afb24c49a9a079159da560b2ce7d1e98efd11af"
 }

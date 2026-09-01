@@ -2,6 +2,31 @@ packages:
   - "apps/*"
   - "packages/*"
 
+# Next.js uses sharp for image optimization. Keep dependency install scripts
+# disabled by default and allow only this reviewed package to run its script.
+allowBuilds:
+  sharp: true
+dangerouslyAllowAllBuilds: false
+strictDepBuilds: true
+
+# 3 days.
+minimumReleaseAge: 4320
+
+# Judge only the last 30 days: older releases predate provenance and trip this
+# constantly.
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 43200
+
+engineStrict: true
+verifyDepsBeforeRun: true
+verifyStoreIntegrity: true
+
+# Drop this once upstream ships the fix. Scoped to the offending path so it
+# does not change unrelated dependency versions.
+overrides:
+  # nanoid <3.3.18  GHSA-2v37-7h3g-55p8 (via postcss)
+  "postcss>nanoid": ^3.3.18
+
 catalog:
   "@types/node": 26.3.0
   "@types/react": 19.2.18
